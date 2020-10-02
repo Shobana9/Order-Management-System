@@ -1,0 +1,55 @@
+Customer Details.html
+
+
+<template>
+    <lightning-record-form
+        object-api-name={accountObject}
+        fields={myFields}
+        onsuccess={handleAccountCreated}>
+    </lightning-record-form>
+</template>
+
+
+customerDetails.js
+
+
+import { LightningElement } from 'lwc';
+import CUSTOMER_DETAIL__C_OBJECT from '@salesforce/schema/Customer_Detail__c';
+import CUSNAME__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusName__c';
+import CUSPOSTALCODE__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusPostalCode__c';
+import CUSSTATE__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusState__c';
+import CUSSTREET__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusStreet__c';
+import CUSEMAIL__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusEmail__c';
+import CUSPHONE__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusPhone__c';
+import CUSCITY__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusCity__c';
+import CUSCOUNTRY__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusCountry__c';
+import CUSLANDMARK__c_FIELD from '@salesforce/schema/Customer_Detail__c.CusLandMark__c';
+
+export default class customerDetails extends LightningElement {
+    accountObject = CUSTOMER_DETAIL__C_OBJECT;
+    myFields = [CUSNAME__c_FIELD,CUSPHONE__c_FIELD,CUSEMAIL__c_FIELD,CUSSTREET__c_FIELD,CUSLANDMARK__c_FIELD,CUSCITY__c_FIELD,CUSSTATE__c_FIELD,CUSCOUNTRY__c_FIELD,CUSPOSTALCODE__c_FIELD];
+
+    handleAccountCreated(){
+        console.log("SUccessfully created");
+    }
+}
+
+
+
+
+customerDetails.js-meta.xml
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets> 
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+</LightningComponentBundle>
+
+
+
